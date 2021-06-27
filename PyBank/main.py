@@ -1,7 +1,9 @@
 import os
 import csv
 
+
 csvpath = os.path.join('c:/Users/Sean & Lauren/DataClass/python-challenge-SPH/PyBank/','Resources','budget_data.csv')
+output_path = os.path.join('c:/Users/Sean & Lauren/DataClass/python-challenge-SPH/PyBank/','analysis','analysis.txt')
 
 #variable for total month
 num_months = 0
@@ -52,7 +54,21 @@ with open(csvpath) as csvfile:
 #calculates the average change across months
 avg_change = (last_month - first_month) / (num_months - 1)    
  
-    
+
+
+#print to console and write to txt file
+
+file1 = open(output_path, 'w')
+file1.write(f"Financial Analysis\n")
+file1.write(f"......................................\n")
+file1.write(f"Total Months: {num_months}\n")
+file1.write(f"Total: {'${:,.2f}'.format(sum_profit)}\n")
+file1.write(f"Average Change: {'${:,.2f}'.format(avg_change)}\n")
+file1.write(f"Greatest Increase in Profits: {great_month} ({'${:,.2f}'.format(great_inc)})\n")
+file1.write(f"Greatest Increase in Profits: {worst_month} ({'${:,.2f}'.format(great_dec)})\n")
+file1.close()
+
+
 print(f"Financial Analysis")
 print(f"......................................")
 print(f"Total Months: {num_months}")
