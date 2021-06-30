@@ -3,7 +3,7 @@ import csv
 
 
 #change file path if necessary 
-csvpath = os.path.join('c:/Users/Sean & Lauren/DataClass/python-challenge-SPH/PyPoll/','Resources','election_data.csv')
+csvpath = os.path.join('Resources','election_data.csv')
 output_path = os.path.join('c:/Users/Sean & Lauren/DataClass/python-challenge-SPH/PyPoll/','analysis','analysis.txt')
 
 votes_cast = 0
