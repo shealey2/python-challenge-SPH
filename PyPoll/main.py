@@ -41,22 +41,23 @@ with open(csvpath) as csvfile:
         candidates_percent[y]=candidates_votes[y]/votes_cast
         if(candidates_votes[y]>highest_vote):
             highest_vote=candidates_votes[y]
-            winning_candidate=candidates[y]
+            winning_candidate=candidates[y]       
 
-
-    
-
-
-            
-
-
-
+file1 = open(output_path, 'w')
+file1.write("Election Results\n")
 print("Election Results")
+file1.write(".................................\n")
 print(".................................")
+file1.write(f"Total Votes: {votes_cast}\n")
 print(f"Total Votes: {votes_cast}")
+file1.write(".................................\n")
 print(".................................")
-print(candidates)
-print(candidates_votes)
-print(candidates_percent)
+for x in range(len(candidates)):
+    file1.write(f"{candidates[x]}: {'{:.3%}'.format(candidates_percent[x])} ({candidates_votes[x]})\n")
+    print(f"{candidates[x]}: {'{:.3%}'.format(candidates_percent[x])} ({candidates_votes[x]})")
+file1.write(".................................\n")
 print(".................................")
+file1.write(f"Winner: {winning_candidate}")
 print(f"Winner: {winning_candidate}")
+file1.close()
+
