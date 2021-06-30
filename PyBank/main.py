@@ -12,6 +12,8 @@ sum_profit = 0
 #variables for average change
 first_month = 0
 last_month = 0
+pre_month = 0
+cur_month = 0
 #variables for greatest increase
 great_inc = 0
 great_month = ""
@@ -27,7 +29,10 @@ with open(csvpath) as csvfile:
    
     #Runs Through Rows
     for row in csvreader: 
-        
+    
+        #sets cur_month value
+        cur_month = row[1]
+
        #adds 1 to for every row it reads
         num_months += 1  
 
@@ -40,15 +45,19 @@ with open(csvpath) as csvfile:
         
         last_month = float(row[1])
 
+       
         #determines if this month profit was greater than the previous greatest and stores month and profit
-        if(float(row[1])>great_inc):
-            great_inc = float(row[1])
+        if(float(cur_month)-float(pre_month)>great_inc):
+            great_inc = float(cur_month)-float(pre_month)
             great_month = str(row[0])
         
         #determines if this month profit was less than the previous greatest and stores month and profit
-        if(float(row[1])<great_dec):
-            great_dec = float(row[1])
+        if(float(cur_month)-float(pre_month)<great_dec):
+            great_dec = float(cur_month)-float(pre_month)
             worst_month = str(row[0])
+    
+        #now that code has run set cur_month to pre_month
+        pre_month = cur_month
 
    
 #calculates the average change across months
@@ -57,7 +66,6 @@ avg_change = (last_month - first_month) / (num_months - 1)
 
 
 #print to console and write to txt file
-
 file1 = open(output_path, 'w')
 file1.write(f"Financial Analysis\n")
 file1.write(f"......................................\n")
