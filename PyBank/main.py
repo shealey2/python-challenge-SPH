@@ -2,6 +2,7 @@ import os
 import csv
 
 
+#change file path if necessary 
 csvpath = os.path.join('c:/Users/Sean & Lauren/DataClass/python-challenge-SPH/PyBank/','Resources','budget_data.csv')
 output_path = os.path.join('c:/Users/Sean & Lauren/DataClass/python-challenge-SPH/PyBank/','analysis','analysis.txt')
 
